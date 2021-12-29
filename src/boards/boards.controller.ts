@@ -12,6 +12,7 @@ import {
 import { Board, BoardStatus } from './boards.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { BoardStatusValidationPipe } from './pipes/border-status-validation.pipe';
 
 @Controller('boards')
 export class BoardsController {
@@ -24,6 +25,7 @@ export class BoardsController {
   @Post()
   @UsePipes(ValidationPipe)
   createBoard(@Body() CreateBoardDto: CreateBoardDto): Board {
+    // 유효성 체크
     return this.borderService.createBoard(CreateBoardDto);
   }
 
@@ -40,7 +42,7 @@ export class BoardsController {
   @Patch('/:id/status')
   updateBoardStatus(
     @Param('id') id: string,
-    @Body('status') status: BoardStatus,
+    @Body('status', BoardStatusValidationPipe) status: BoardStatus,
   ) {
     return this.borderService.updateBoardStatus(id, status);
   }
