@@ -30,6 +30,10 @@ export class BoardsController {
   //   // 유효성 체크
   //   return this.borderService.createBoard(CreateBoardDto);
   // }
+  @Get()
+  getAllBoard(): Promise<Board[]> {
+    return this.borderService.getAllBoards();
+  }
 
   @Post()
   @UsePipes(ValidationPipe)
