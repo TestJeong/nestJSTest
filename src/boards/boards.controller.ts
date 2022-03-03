@@ -16,6 +16,7 @@ import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardStatusValidationPipe } from './pipes/border-status-validation.pipe';
 
+// boards에 관한 컨트롤러이며 borards에 관련된 요청이 들어오면 아래의 컨트롤러에서 처리가 된다
 @Controller('boards')
 export class BoardsController {
   constructor(private borderService: BoardsService) {}
